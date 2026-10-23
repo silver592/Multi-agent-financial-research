@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual Environment
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Database and Storage (Local Data)
+*.db
+*.sqlite3
+data/
+uploads/*
+!uploads/.gitkeep
+
+# Environment variables & secrets
+.env
+.env.*
+!.env.example
+
+# Vector Store
+chroma_db/
+
+# Scratch & temporary development scripts
+scratch/
+sample_research_response.json
+tcs_profit.txt
+
+# IDE & OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

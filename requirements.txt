@@ -1,0 +1,11 @@
+#requirements.txt --> "These are the libraries required to run my project"
+fastapi
+uvicorn
+sqlalchemy
+pydantic
+python-multipart
+pypdf
+chromadb
+sentence-transformers
+requests
+streamlit
