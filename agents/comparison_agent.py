@@ -446,3 +446,4 @@ def compare_company_metrics(
         "metrics": metric_results,
         "limitations": sorted(list(set(limitations))),
     }
+#Done

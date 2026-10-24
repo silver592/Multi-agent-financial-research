@@ -260,3 +260,4 @@ A user story or feature is marked **Done** only when:
 - **RAG Requires Data Discipline:** Retrieval quality directly depends on parsing and chunking quality. Investing time into document pre-processing yielded greater accuracy improvements than prompt engineering alone.
 - **Multi-Agent Coordination:** Orchestrating multiple agents requires rigid input/output schema contracts (Pydantic) to ensure intermediate outputs pass reliably from one agent to the next.
 - **Agile Value in Capstone Projects:** Breaking the project into 4 progressive sprints allowed steady incremental milestones, transforming complex enterprise requirements into manageable, testable components.
+#Done
