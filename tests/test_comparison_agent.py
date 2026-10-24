@@ -20,7 +20,7 @@
 import unittest
 from fastapi.testclient import TestClient
 
-from main import app
+from app.main import app
 from agents.comparison_agent import (
     compare_company_metrics,
     select_company_metric_value,

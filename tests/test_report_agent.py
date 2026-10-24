@@ -7,7 +7,7 @@
 import unittest
 from fastapi.testclient import TestClient
 
-from main import app
+from app.main import app
 from agents.report_agent import (
     build_key_financials,
     build_executive_summary,

@@ -189,14 +189,14 @@ The system requires both the FastAPI backend and the Streamlit frontend to run s
 ### Terminal 1: Launch FastAPI Backend
 ```powershell
 .\venv\Scripts\activate
-uvicorn main:app --reload --host 127.0.0.1 --port 8000
+uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
 ```
 *The interactive API documentation (Swagger UI) is accessible at: `http://127.0.0.1:8000/docs`*
 
 ### Terminal 2: Launch Streamlit Frontend
 ```powershell
 .\venv\Scripts\activate
-streamlit run app.py
+streamlit run app/app.py
 ```
 *The web interface will automatically open in your default browser at: `http://localhost:8501`*
 
@@ -209,7 +209,7 @@ The project includes unit and integration tests covering deterministic calculati
 Execute tests using Python's built-in `unittest` runner:
 ```powershell
 .\venv\Scripts\activate
-python -m unittest test_comparison_agent.TestComparisonAgentUnit test_report_agent.TestReportAgentUnit test_research_agent.TestResearchAgentUnit test_conversational_api.TestConversationalResearchAPI -v
+python -m unittest discover -s tests -p "test_*.py" -v
 ```
 
 ---

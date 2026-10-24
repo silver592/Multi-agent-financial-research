@@ -6,9 +6,12 @@ from pathlib import Path
 import uuid
 import shutil
 
-from database import engine, SessionLocal, Base
-from models import ResearchSession, Document
-from schemas import (
+# Resolve repo root so uploads/ is always found relative to the repository root
+_ROOT = Path(__file__).resolve().parent.parent
+
+from app.database import engine, SessionLocal, Base
+from app.models import ResearchSession, Document
+from app.schemas import (
     SessionCreate,
     SessionResponse,
     DocumentResponse,
@@ -30,7 +33,7 @@ from agents.research_agent import answer_research_question
 from agents.comparison_agent import compare_company_metrics
 from agents.report_agent import generate_initial_report
 
-from orchestrator import run_analysis_pipeline
+from app.orchestrator import run_analysis_pipeline
 
 
 
@@ -53,7 +56,7 @@ def get_db():
 
 
 # Create uploads folder
-UPLOAD_DIR = Path("uploads")
+UPLOAD_DIR = _ROOT / "uploads"
 UPLOAD_DIR.mkdir(exist_ok=True)
 
 

@@ -1,6 +1,9 @@
 import streamlit as st
 import pandas as pd
-from api_client import APIClient
+try:
+    from app.api_client import APIClient
+except ImportError:
+    from api_client import APIClient
 
 st.set_page_config(
     page_title="Financial Research AI",
@@ -350,17 +353,22 @@ elif nav_selection == "🚩 Red Flag Analysis":
                         st.markdown("### ⚠️ Identified Concerns")
                         for f in flags:
                             sev = f.get("severity", "medium").upper()
-                            alert_box = st.error if sev == "HIGH" else st.warning
-                            with alert_box(f"**{f.get('flag_id')} [{sev} SEVERITY]: {f.get('title')}**"):
-                                st.write(f.get("description"))
+                            alert_fn = st.error if sev == "HIGH" else st.warning
+                            alert_fn(f"**{f.get('flag_id')} [{sev} SEVERITY]: {f.get('title')}**")
+                            with st.container():
+                                st.markdown(f"**Description:** {f.get('description')}")
                                 ev = f.get("evidence", {})
                                 if ev:
-                                    st.write(f"- **Current Value:** {ev.get('current_value'):,} {ev.get('unit')}")
-                                    st.write(f"- **Previous Value:** {ev.get('previous_value'):,} {ev.get('unit')}")
+                                    c_val = ev.get('current_value')
+                                    p_val = ev.get('previous_value')
+                                    unit = ev.get('unit', '')
+                                    st.write(f"- **Current Value:** {c_val:,} {unit}" if c_val is not None else "")
+                                    st.write(f"- **Previous Value:** {p_val:,} {unit}" if p_val is not None else "")
                                     st.write(f"- **Decline Percentage:** `{ev.get('change_percent')}%`")
                                 cit = f.get("citation", {})
                                 if cit:
                                     st.caption(f"Source: Page {cit.get('page_number')}, Statement: {cit.get('statement_type')}")
+                                st.divider()
                     else:
                         st.info("✅ No revenue decline red flags were identified across analyzed statements.")
                 else:
